@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Suspense,lazy} from 'react'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import "./sass/main.scss"
+import 'antd/dist/antd.css';
+import Navi from "./common/index"
+import Footer from './common/footer/index'
+import Loading from './pages/loading/index'
+import { ParallaxProvider } from 'react-scroll-parallax';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const Home = lazy(()=>import("./pages/home/index"))
+const Product = lazy(()=>import("./pages/products/index"))
+const Team = lazy(()=>import("./pages/Team/index"))
+const About =lazy(()=> import("./pages/About/index"))
+
+const App :React.FC =()=>{
+
+  return(
+    <>
+
+<ParallaxProvider>
+<BrowserRouter>
+<Navi/>
+
+<Suspense fallback={<div>...loading</div>}>
+<Routes>
+   <Route element={<Home />} path="/"/> 
+   <Route element={<Product/>} path="/Product"/> 
+   <Route element={<Loading />} path="/loading"/> 
+   <Route element={<Team/>} path="/team"/> 
+   <Route element={<About/>} path="/about"/> 
+
+</Routes>
+<Footer />
+</Suspense>
+
+
+</BrowserRouter>
+
+</ParallaxProvider>
+
+    </>
+  )
 }
 
 export default App;

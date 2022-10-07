@@ -1,0 +1,51 @@
+.p-title{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:350px;
+
+   h1{
+        color:white;
+      font-size:4rem;
+      font-family: 'Niconne' !important;
+      
+    }
+}
+
+
+.p-card:hover{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   
+}
+
+.p-img{
+  height:220px;
+  width:362px;
+  filter:brightness(90%);
+  scale:1;
+  transition: 1s;
+
+  &:hover{
+    animation: expose 0.5s forwards ease-in-out;
+    scale:1.2;
+  }
+}
+
+@keyframes expose{
+  0%{filter:brightness(90%);}
+  50%{filter:brightness(130%);}
+  100%{filter:brightness(90%)}
+}
+
+
+
+
+.p-inner{
+  width:290px;
+
+
+ span{
+  float:right;
+ }
+}
