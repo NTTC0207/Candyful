@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar, Row, Col } from 'antd'
+
 const Fade = require("react-reveal/Fade")
 
 const colPo = {
@@ -35,8 +36,8 @@ const Team: React.FC = () => {
                                 <Col lg={8} md={12} sm={24} xs={24} >
                                     <Fade bottom delay={250}>
                                         <div className="t-card" style={colPo}>
-                                            <Avatar className="t-avatar" size={128} src="https://www.yualexius.com/wp-content/uploads/2021/05/Zhang-Chulan-chinese-anime-male-character.png?ezimgfmt=rs:371x208/rscb42/ngcb42/notWebP" />
-                                            <h2>Daniel Lim</h2>
+                                            <Avatar className="t-avatar" size={128} src="https://i03piccdn.sogoucdn.com/2de9963f8009168b" />
+                                            <h2>Chee Hao Yang</h2>
                                             <p> Back-End Developer </p>
                                         </div>
                                     </Fade>
@@ -47,8 +48,8 @@ const Team: React.FC = () => {
                                 <Col lg={8} md={24} sm={24} xs={24} >
                                     <Fade right delay={500}>
                                         <div className="t-card" style={colPo}>
-                                            <Avatar className="t-avatar" size={128} src="https://i.pinimg.com/222x/8d/4f/44/8d4f442214edc01230b38228bad5226f.jpg" />
-                                            <h2>Peng Siew Hui</h2>
+                                            <Avatar className="t-avatar" size={128} src="https://i03piccdn.sogoucdn.com/2de9963f8009168b" />
+                                            <h2>Chee Hao Yang</h2>
                                             <p> Database Architect</p>
                                         </div>
                                     </Fade>

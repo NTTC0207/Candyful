@@ -1,0 +1,68 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "Caramels",
+            "url": "https://images.pexels.com/photos/1578293/pexels-photo-1578293.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 20,
+            "stock": false,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 2,
+            "name": "Gummies",
+            "url": "https://images.pexels.com/photos/6798399/pexels-photo-6798399.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "quantity":1,
+            "price": 10,
+            "stock": true,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 3,
+            "name": "Chewing gums",
+            "url": "https://images.pexels.com/photos/1906435/pexels-photo-1906435.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 15,
+            "stock": true,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 4,
+            "name": "Licorie",
+            "url": "https://images.pexels.com/photos/1375808/pexels-photo-1375808.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 30,
+            "stock": false,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 5,
+            "name": "Lollipops",
+            "url": "https://images.pexels.com/photos/89731/pexels-photo-89731.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 15,
+            "stock": true,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 6,
+            "name": "Sours",
+            "url": "https://images.pexels.com/photos/1236662/pexels-photo-1236662.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 5,
+            "stock": false,
+            "desc": "This is Descroption"
+        },
+        {
+            "id": 7,
+            "name": "Jelly",
+            "url": "https://images.pexels.com/photos/1296170/pexels-photo-1296170.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1",
+            "quantity":1,
+            "price": 20.10,
+            "stock": true,
+            "desc": "This is Descroption"
+        }
+    ]
+}

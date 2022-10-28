@@ -1,0 +1,325 @@
+
+
+$primary : #FA7070;
+$text : white;
+
+
+.n-Logo {
+  font-family: 'Niconne' !important;
+  color: white;
+  font-size: 1.7rem;
+  position: absolute;
+  bottom: 0;
+
+}
+
+.MNav {
+  text-align: center;
+  width: 100%;
+
+  padding-inline-start: 0px !important;
+  margin-block-end: 0em !important;
+  overflow: hidden;
+
+
+
+  // .Logo {
+  //   position: absolute;
+  //   left: 0;
+  //   color: white;
+  // }
+
+
+  .MliCart {
+
+    text-decoration: none;
+    padding: 10px 0;
+    list-style-type: none;
+    font-family: 'Niconne' !important;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    transition: .2s;
+
+
+    &:hover {
+      background: $primary;
+      color: white;
+    }
+
+  }
+
+  .navCol {
+    color: black;
+    transition: .2s;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  // .liCart2 {
+  //   text-decoration: none;
+  //   list-style-type: none;
+  //   margin-right: 30px;
+  //   color: black;
+  //   cursor: pointer;
+  //   position: relative;
+  //   width: 100%;
+  //   transition: .2s;
+  // }
+
+  // .liText {
+  //   text-decoration: none;
+  //   list-style-type: none;
+  //   margin-right: 30px;
+  //   color: white;
+  //   cursor: pointer;
+  //   position: relative;
+  //   width: 100%;
+
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     left: 50%;
+  //     bottom: 0;
+  //     width: 0px;
+  //     height: 100%;
+  //     background-color: white;
+  //     height: 1px;
+  //     transition: .2s;
+  //   }
+
+  //   &:hover::after {
+  //     width: 100%;
+  //     left: 0;
+  //   }
+
+  // }
+
+
+  // .liText2 {
+  //   text-decoration: none;
+  //   list-style-type: none;
+  //   margin-right: 30px;
+  //   color: black;
+  //   cursor: pointer;
+  //   position: relative;
+  //   width: 100%;
+
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     left: 50%;
+  //     bottom: 0;
+  //     width: 0px;
+  //     height: 100%;
+  //     background-color: black;
+  //     height: 1px;
+  //     transition: .2s;
+  //   }
+
+  //   &:hover::after {
+  //     width: 100%;
+  //     left: 0;
+  //   }
+
+  // }
+
+}
+
+
+
+
+//Responsive navbar
+
+@media only screen and (max-width: 576px) {
+
+  .Mobile {
+    display: block;
+  }
+
+  .Desktop {
+    display: none;
+  }
+
+  .res-Pro {
+    width: 100%;
+  }
+
+  .res-Price {
+    float: left;
+  }
+
+  .res-Table {
+    width: 100%;
+    padding: 0px;
+  }
+
+  // .image-1{
+  //  display:"none" !important; 
+  // }
+  // .image-2{
+  //  display:"none" !important; 
+  // }
+  // .image-3{
+  //    display:"none"!important; 
+  // }
+
+
+}
+
+
+@media only screen and (min-width: 577px) {
+
+  .Mobile {
+    display: none;
+  }
+
+  .Desktop {
+    display: block;
+  }
+
+  .res-Pro {
+    width: 80%;
+  }
+
+  .res-Table {
+    width: 80%;
+    padding: 40px;
+  }
+
+}
+
+
+
+//profile
+
+.container1 {
+  padding-top:120px; 
+  padding-bottom:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: "100%";
+  height: "100vh";
+
+}
+
+.card1 {
+  height: 420px;
+  width: 320px;
+  background: linear-gradient(to bottom,
+      #ffffff 110px,
+      #ffffff 110px);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(50, 50, 50, 0.1);
+  padding: 50px 0;
+}
+
+.card1 * {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.pro-img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 0 8px #FA7070;
+}
+
+.card1 h4 {
+  color: $primary;
+  font-size: 16px;
+  margin: 15px 0 5px 0;
+}
+
+.card1 h5 {
+  color: #454545;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.details {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.details h2 {
+  font-weight: 400;
+}
+
+.details span {
+  color: $primary;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.buttons button {
+  width: 130px;
+  padding: 8px 0;
+  border-radius: 25px;
+  border: 3px solid $primary;
+}
+
+.buttons button:first-child {
+  background-color: $primary;
+  color: #ffffff;
+}
+
+.buttons button:last-child {
+  background-color: transparent;
+  color: $primary;
+}
+
+.themes {
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(50, 50, 50, 0.1);
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.themes button {
+  height: 25px;
+  width: 25px;
+  border: 3px solid #dddddd;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn1 {
+  background-color: #3498db;
+}
+
+.btn2 {
+  background-color: #ff1756;
+}
+
+.btn3 {
+  background-color: #1cb65d;
+}
+
+.btn4 {
+  background-color: #8e44ad;
+}
+
+.btn5 {
+  background-color: #f4b932;
+}

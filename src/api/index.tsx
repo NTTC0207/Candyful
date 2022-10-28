@@ -1,0 +1,1 @@
+export const apiUrl="https://techno20221027164650.azurewebsites.net"

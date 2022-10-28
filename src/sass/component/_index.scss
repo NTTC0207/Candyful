@@ -8,25 +8,38 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif !important;
     background:#FA7070 !important;
+  width: 100% !important; 
+    
+  }
+
+
+  .profile-a{
+  
+    &:hover{
+      color:$primary;
+    }
+    
   }
   
 
 
   /* Scrollbar Styling */
+
+
 ::-webkit-scrollbar {
   background: transparent;
-  width: 4px;
+  // width: 4px;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
+// ::-webkit-scrollbar-track {
+//   background: transparent;
+//   -webkit-border-radius: 10px;
+//   border-radius: 10px;
+// }
 
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: white; 
-}
+// ::-webkit-scrollbar-thumb {
+//   -webkit-border-radius: 10px;
+//   border-radius: 10px;
+//   background: white; 
+// }
   
