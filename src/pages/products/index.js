@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Avatar, Card, Skeleton,notification } from 'antd';
+import {  Card, Skeleton,notification } from 'antd';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
-import { apiUrl } from '../../api';
 import {useSelector,useDispatch} from 'react-redux'
 import * as actionCreators from '../Login/store/actionCreators'
 axios.defaults.withCredentials = true;
@@ -26,11 +25,7 @@ const Product = () => {
 
         axios({
             method:"GET",
-            url:apiUrl+"/api/publicproduct",
-            headers: {
-                'Access-Control-Allow-Origin' : '*',
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-            }
+            url:process.env.REACT_APP_APIURL+"/api/publicproduct",
         })
         .then((res)=>(
             dispatch( actionCreators.setProduct(res.data)),
@@ -44,7 +39,7 @@ const Product = () => {
 
         axios({
             method: "POST",
-            url:apiUrl+"/api/cart/"+id,
+            url:process.env.REACT_APP_APIURL+"/api/cart/"+id,
             withCredentials:true,
             headers: {
                 'Access-Control-Allow-Origin' : '*',
@@ -58,7 +53,7 @@ const Product = () => {
 
                   axios({
                     method: 'GET',
-                    url:apiUrl+"/api/cart",
+                    url:process.env.REACT_APP_APIURL+"/api/cart",
                     withCredentials:true
                   })
                   .then((res)=>{
@@ -105,7 +100,7 @@ const Product = () => {
                                                                 <img
                                                                     className="p-img"
                                                                     alt="example"
-                                                                    src={`${apiUrl}${item.purl}`}
+                                                                    src={`${process.env.REACT_APP_APIURL}${item.purl}`}
                                                                 />
                                                                 <Skeleton.Image active={true} style={{ height: "220px", width: "362px" }} />
                                                             </div>

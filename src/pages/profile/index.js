@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { Button, Modal, Spin, Alert, Form,Avatar, Input, message, Upload, Slider, notification } from 'antd';
-import ImgCrop from 'antd-img-crop';
-import { apiUrl } from '../../api/index'
+import {  useEffect } from "react"
+import {  Alert,Avatar, } from 'antd';
 import Marquee from 'react-fast-marquee';
 import * as actionCreators from '../../pages/Login/store/actionCreators'
 import {useDispatch,useSelector} from 'react-redux'
@@ -15,38 +13,11 @@ const Profile = () => {
     const dispatch =useDispatch()
     const profile = useSelector((state)=>state.login.profile)
 
-    const props = {
-        width: 500,  //裁剪宽度
-        height: 300, //裁剪高度
-        resize: false, //裁剪是否可以调整大小
-        resizeAndDrag: true, //裁剪是否可以调整大小、可拖动
-        modalTitle: "上传图片", //弹窗标题
-        modalWidth: 600, //弹窗宽度
-    };
-    const [fileList, setFileList] = useState([]);
-
-    const onChange = ({ fileList: newFileList }) => {
-        setFileList(newFileList)
-    };
-    const onPreview = async (file) => {
-        let src = file.url;
-        if (!src) {
-            src = await new Promise(resolve => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file.originFileObj);
-                reader.onload = () => resolve(reader.result);
-            });
-        }
-        const image = new Image();
-        image.src = src;
-        const imgWindow = window.open(src);
-        imgWindow?.document.write(image.outerHTML);
-    };
 
     useEffect(() => {
         axios({
             method:"GET",
-            url:apiUrl+'/api/profile'
+            url:process.env.REACT_APP_APIURL+'/api/profile'
         })
         .then((res)=>(
             dispatch(actionCreators.setProfile(res.data))

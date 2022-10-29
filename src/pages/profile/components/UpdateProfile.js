@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Modal, Spin, Form, Input, message, Upload, Slider, notification,Typography } from 'antd';
+import  { useState } from 'react';
+import { Button, Modal, Spin, Form, Input, Typography } from 'antd';
 import { useNavigate ,Navigate } from 'react-router-dom'
 import axios from 'axios';
-import { apiUrl } from '../../../api/index'
 import { useSelector } from 'react-redux'
 axios.defaults.withCredentials = true;
 
@@ -43,7 +42,7 @@ console.log(values.name,values.desc)
 
         axios({
             method: "PUT",
-            url: apiUrl + "/api/profile",
+            url: process.env.REACT_APP_APIURL + "/api/profile",
             data: Form,
             headers:{'Content-Type': 'application/json; charset=utf-8'},
             withCredentials: true,
@@ -68,14 +67,7 @@ console.log(values.name,values.desc)
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const props = {
-        width: 500,  //裁剪宽度
-        height: 300, //裁剪高度
-        resize: false, //裁剪是否可以调整大小
-        resizeAndDrag: true, //裁剪是否可以调整大小、可拖动
-        modalTitle: "上传图片", //弹窗标题
-        modalWidth: 600, //弹窗宽度
-    };
+   
     if(login){
 
         return (

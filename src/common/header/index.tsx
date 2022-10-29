@@ -9,7 +9,7 @@ import { Badge, BackTop, Dropdown, Menu, Space } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreators from '../../pages/Login/store/actionCreators'
 import axios from 'axios'
-import { apiUrl } from '../../api/index'
+
 import { Spin as Hamburger } from 'hamburger-react'
 axios.defaults.withCredentials = true;
 
@@ -42,7 +42,7 @@ const Navi: React.FC = (props) => {
     if (login) {
       axios({
         method: 'GET',
-        url: apiUrl + "/api/cart",
+        url: process.env.REACT_APP_APIURL + "/api/cart",
         withCredentials: true
         
       })
@@ -111,7 +111,7 @@ const Navi: React.FC = (props) => {
     dispatch(actionCreators.setLoad(false))
     axios({
       method: "DELETE",
-      url: apiUrl + "/api/login",
+      url: process.env.REACT_APP_APIURL + "/api/login",
 
     })
   }

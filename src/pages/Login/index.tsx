@@ -8,7 +8,6 @@ import { gapi } from 'gapi-script';
 import { useSelector,useDispatch } from 'react-redux';
 import * as actionCreators from './store/actionCreators'
 import axios from 'axios'
-import {apiUrl} from '../../api/index'
 import store from '../../store/homeReducer'
 
 axios.defaults.withCredentials = true;
@@ -58,7 +57,7 @@ const Login = () => {
 
         axios({
             method: "POST",
-            url:apiUrl+"/api/login",
+            url:process.env.REACT_APP_APIURL+"/api/login",
             data:Form,
             withCredentials:true
         }).then((res)=>{ 

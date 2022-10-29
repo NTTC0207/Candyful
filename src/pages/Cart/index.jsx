@@ -3,7 +3,7 @@ import { Space, Table, Tag, notification, Button, Image, Row, Col,Input ,Form} f
 import axios from 'axios'
 import { CartWrapper } from './style'
 import { LeftOutlined, RightOutlined, CloseOutlined } from '@ant-design/icons';
-import { apiUrl } from '../../api';
+
 import * as actionCreators from '../Login/store/actionCreators'
 import { useDispatch, useSelector } from 'react-redux';
 import {  Navigate } from 'react-router-dom'
@@ -21,7 +21,7 @@ const Cart = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: apiUrl + "/api/cart",
+      url: process.env.REACT_APP_APIURL + "/api/cart",
       withCredentials: true
     }).then((res) => (setProduct(res.data), dispatch(actionCreators.setCart(res.data.length))))
   }, [])
@@ -88,7 +88,7 @@ const Cart = () => {
 
     axios({
       method: "POST",
-      url: apiUrl + "/api/payment/create-checkout-session",
+      url: process.env.REACT_APP_APIURL + "/api/payment/create-checkout-session",
       withCredentials: true
     }).then((res) => { window.location.href = res.data })
       .catch((err) => alert(err))
@@ -106,7 +106,7 @@ const Cart = () => {
 
     axios({
       method: "PUT",
-      url: apiUrl + "/api/cart/" + k
+      url: process.env.REACT_APP_APIURL + "/api/cart/" + k
     })
 
   }, [product])
@@ -120,7 +120,7 @@ const Cart = () => {
       product1[index].itemQuantity = (product1[index].itemQuantity | 0) - 1
       axios({
         method: "PUT",
-        url: apiUrl + "/api/cart/minus/" + k
+        url: process.env.REACT_APP_APIURL + "/api/cart/minus/" + k
       })
       setProduct(product1)
     }
@@ -136,11 +136,11 @@ const Cart = () => {
   const handleDelete = (id) => {
     axios({
       method: "DELETE",
-      url: apiUrl + "/api/cart/" + id
+      url: process.env.REACT_APP_APIURL+ "/api/cart/" + id
     }).then(() => {
       axios({
         method: "GET",
-        url: apiUrl + "/api/cart",
+        url: process.env.REACT_APP_APIURL + "/api/cart",
         withCredentials: true
       })
         .then((res) => {
@@ -166,7 +166,7 @@ const Cart = () => {
       key: 'id',
       render: (_, product) =>
         <div style={{ width: "100%", float: 'left' }}>
-          <img style={{ height: "100px", width: "100px", objectFit: "cover" }} src={`${apiUrl}${"/" + product.purl}`} />
+          <img style={{ height: "100px", width: "100px", objectFit: "cover" }} src={`${process.env.REACT_APP_APIURL}${"/" + product.purl}`} />
           <span style={{ marginLeft: '5px' }}> {product.pname}</span>
 
         </div>,

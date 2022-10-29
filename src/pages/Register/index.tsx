@@ -2,7 +2,6 @@ import { Button, Checkbox, Form, Input, Spin, Alert } from 'antd';
 import { LoginWrapper, RegisterWrapper, } from '../Login/style'
 import React, { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { apiUrl } from '../../api';
 import axios from 'axios'
 
 const { TextArea } = Input
@@ -31,7 +30,7 @@ const Register: React.FC = () => {
             Form.append("PhoneNumber", values.phone)
             axios({
                 method: "Post",
-                url: apiUrl + "/api/login/register",
+                url: process.env.REACT_APP_APIURL + "/api/login/register",
                 data: Form,
 
             })

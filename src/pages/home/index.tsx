@@ -1,16 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef } from 'react';
 import { HomeWrap } from './style'
 import { gsap, Power2 } from 'gsap'
 import CssRulePlugin from 'gsap/CSSRulePlugin'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { Row, Col } from 'antd'
 import { ShoppingOutlined } from '@ant-design/icons';
 import 'hover.css'
 import * as actionCreators from '../Login/store/actionCreators'
 import {useDispatch,useSelector} from 'react-redux'
-import Wall from './component/Wall'
-import Testi from './component/Testimonial'
-
 
 const Home = () => {
     const dispatch = useDispatch();

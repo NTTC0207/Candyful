@@ -10,7 +10,7 @@ import Footer from './common/footer/index'
 import {Spin} from 'antd'
 import Loading from './pages/loading/index'
 import axios from 'axios'
-import { apiUrl } from './api/index'
+
 import Inter from './pages/loading/interceptor'
 import { Slide } from 'react-reveal'
 
@@ -90,7 +90,7 @@ const App = () => {
         setLoad(true)
         axios({
           method: "GET",
-          url: apiUrl + "/api/refresh",
+          url:process.env.REACT_APP_APIURL + "/api/refresh",
           withCredentials: true
         }).then((res) => {
           if (res.status === 200) {
