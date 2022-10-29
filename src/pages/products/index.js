@@ -23,13 +23,20 @@ const Product = () => {
   
 
     useEffect(() => {
-        axios.get(apiUrl + "/api/publicproduct")
-            .then((res) => (
-                console.log(res.data),
-                 dispatch( actionCreators.setProduct(res.data)),
-                setLoad(true)
-            ))
-            .catch(() => console.log("No data founded"))
+
+        axios({
+            method:"GET",
+            url:apiUrl+"/api/publicproduct",
+            headers: {
+                'Access-Control-Allow-Origin' : '*',
+            }
+        })
+        .then((res)=>(
+            dispatch( actionCreators.setProduct(res.data)),
+           setLoad(true)
+        ))
+        .catch(() => console.log("No data founded"))
+            
     }, [])
 
     const addCart =(id)=>{
@@ -37,7 +44,10 @@ const Product = () => {
         axios({
             method: "POST",
             url:apiUrl+"/api/cart/"+id,
-            withCredentials:true
+            withCredentials:true,
+            headers: {
+                'Access-Control-Allow-Origin' : '*',
+            }
         }).then((res)=>{
             if(res.status === 200){
                 notification["success"]({

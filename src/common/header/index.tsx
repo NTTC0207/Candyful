@@ -44,6 +44,7 @@ const Navi: React.FC = (props) => {
         method: 'GET',
         url: apiUrl + "/api/cart",
         withCredentials: true
+        
       })
         .then((res) => {
           dispatch(actionCreators.setCart(res.data.length))
