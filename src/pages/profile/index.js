@@ -1,39 +1,51 @@
-import {  useEffect } from "react"
-import {  Alert,Avatar, } from 'antd';
+import { useEffect } from "react"
+import { Alert, Avatar, Col, Row, Collapse, Space } from 'antd';
 import Marquee from 'react-fast-marquee';
 import * as actionCreators from '../../pages/Login/store/actionCreators'
-import {useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { UserOutlined } from '@ant-design/icons';
 import UpdateProfile from './components/UpdateProfile'
+import {Link} from 'react-router-dom'
 import axios from 'axios';
+import moment from 'moment';
+axios.defaults.withCredentials = true;
+
+const { Panel } = Collapse;
 
 
 const Profile = () => {
 
-    const dispatch =useDispatch()
-    const profile = useSelector((state)=>state.login.profile)
+    const dispatch = useDispatch()
+    const profile = useSelector((state) => state.login.profile)
 
+    const ChangeDate = (date) => {
+        return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    
+    }
 
     useEffect(() => {
         axios({
-            method:"GET",
-            url:process.env.REACT_APP_APIURL+'/api/profile'
+            method: "GET",
+            url: process.env.REACT_APP_APIURL + '/api/profile',
+            withCredentials: true
         })
-        .then((res)=>(
-            dispatch(actionCreators.setProfile(res.data))
-            
+            .then((res) => (
+                console.log(res.data),
+                dispatch(actionCreators.setProfile(res.data))
+
             ))
-        
+
     }, [])
 
 
-    function addStr(str, index, stringToAdd){
-        return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
-      }
+    const addStr = () => {
+        return profile.phoneNumber.substring(0, 3) + "-" + profile.phoneNumber.substring(3, profile.phoneNumber.length);
+    }
 
 
     return (
         <div>
+
 
 
             <div style={{ position: 'absolute', top: "70px", width: "100%" }}>
@@ -47,32 +59,69 @@ const Profile = () => {
                 />
             </div>
 
-            <div className="container1">
-                <div className="card1">
-                   
-                   
-                    <Avatar  className="pro-img" size={100} icon={< UserOutlined/>} />
-                 
-                    <h4>{profile.userName}</h4>
-                    <h5> {addStr(profile.phoneNumber, 3, "-")}</h5>
-                    <div className="details">
-                        <div className="column">
-                            {/* <h2>1.6K</h2>
+            <Row>
+                <Col lg={12} md={12} sm={24} xs={24}>
+
+                    <div className="container1">
+                        <div className="card1">
+
+
+                            <Avatar className="pro-img" size={100} icon={< UserOutlined />} />
+
+                            <h4>{profile.userName}</h4>
+                            <h5> {addStr()}</h5>
+                            <div className="details">
+                                <div className="column">
+                                    {/* <h2>1.6K</h2>
                             <span>Followers</span>
                         </div>
                         <div className="column">
                             <h2>852</h2>
                             <span>Following</span> */}
-                            <div style={{ padding: "0 15px" }}>{profile.address}</div>
+                                    <div style={{ padding: "0 15px" }}>{profile.address}</div>
+                                </div>
+                            </div>
+                            <div className="buttons">
+                                <UpdateProfile profile={profile} />
+                                {/* <button >Update</button> */}
+                                <button ><a className="profile-a" href="mailto:lkeki2015@gmail.com">Contact Us</a></button>
+                            </div>
                         </div>
                     </div>
-                    <div className="buttons">
-                        <UpdateProfile  profile={profile}/>
-                        {/* <button >Update</button> */}
-                        <button ><a className="profile-a" href="mailto:lkeki2015@gmail.com">Contact Us</a></button>
+                </Col>
+                <Col lg={12} md={12} sm={24} xs={24}>
+                    <div className="container2" style={{ width: "100%" }}>
+
+                        <Space direction="vertical" style={{ width: "70%", float: "left" }}>
+                            <div className="pr-order">Order History</div>
+                 
+                         {
+                            profile.order.length === 0 ? <div style={{color:"white"}}>  Make your first order <Link to="/product" style={{cursor:"pointer",color:"white"}}>here</Link></div> : 
+                            
+                                profile.order.map((item) => {
+                                    return (
+                                        <>
+                                            <Collapse collapsible="header">
+                                                <Panel header={<span>PaymentID:   {item.paymentID}</span>} key={item.orderID}>
+                                                    <div> {ChangeDate(item.orderDate)}</div>
+                                                    <div>RM {(item.totalAmout/100).toFixed(2)}</div>
+                                                 
+                                                </Panel>
+                                            </Collapse>
+                                        </>
+                                    )
+                                })
+                            }
+                         
+                            
+                        </Space>
                     </div>
-                </div>
-            </div>
+                </Col>
+
+
+            </Row>
+
+
 
 
         </div>
