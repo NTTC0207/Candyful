@@ -1,18 +1,15 @@
-import React, { Suspense, lazy, useState } from 'react'
+import  { Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "./sass/main.scss"
-// import 'antd/dist/antd.css';
-import { Provider, useSelector } from 'react-redux'
+import { Provider} from 'react-redux'
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from './store/homeReducer'
 import Navi from "./common/header/index"
 import Footer from './common/footer/index'
-import {Spin} from 'antd'
 import Loading from './pages/loading/index'
 import axios from 'axios'
 
-import Inter from './pages/loading/interceptor'
-import { Slide } from 'react-reveal'
+
 
 const Home = lazy(() => {
   return Promise.all([
@@ -76,7 +73,7 @@ const UnAuthorized = lazy(() => import("./pages/404/403"))
 
 const App = () => {
 
-  const [load, setLoad] = useState(false)
+  // const [load, setLoad] = useState(false)
 
 
   axios.interceptors.response.use(
@@ -86,15 +83,14 @@ const App = () => {
     },
     err => {
       if (err.response.status === 401) {
-        console.log("hello")
-        setLoad(true)
+       
         axios({
           method: "GET",
           url:process.env.REACT_APP_APIURL + "/api/refresh",
           withCredentials: true
         }).then((res) => {
           if (res.status === 200) {
-            setLoad(false)
+          
           }
         })
       }
@@ -112,13 +108,8 @@ const App = () => {
       <Provider store={store} >
         <PersistGate persistor={persistor}>
 
-          {/* <Slide left opposite when={load}>
-            <Inter />
-          </Slide> */}
-
 
           <BrowserRouter>
-            {/* <Refresh /> */}
          
            
             <Navi />

@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, Spin, Alert } from 'antd';
+import { Button, Form, Input, Spin, Alert } from 'antd';
 import { LoginWrapper, RegisterWrapper, } from '../Login/style'
 import React, { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
@@ -41,16 +41,16 @@ const Register: React.FC = () => {
                 })
                 .catch((err) => {
                     setLoad(false)
-                    console.log(err)
+
                     setShow(true)
-            
-                    if(err.response.data.description){
+
+                    if (err.response.data.description) {
                         setError(err.response.data.description)
-                    }else{
+                    } else {
                         setError(err.response.data)
                     }
-                        
-                
+
+
 
                 })
         } else {
@@ -65,11 +65,11 @@ const Register: React.FC = () => {
     const handlecPChange = useCallback((e: any) => {
         setcPassword(e.target.value)
 
-    }, [cPassword])
+    }, [])
     const handlePChange = useCallback((e: any) => {
         setPassword(e.target.value)
 
-    }, [password])
+    }, [])
 
 
     return (
@@ -132,7 +132,7 @@ const Register: React.FC = () => {
                                 </Form.Item>
 
                                 <Form.Item
-                                
+
                                     name="phone"
                                     rules={[{ required: true, message: 'Please input Phone!' }]}
 

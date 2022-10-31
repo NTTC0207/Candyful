@@ -1,11 +1,10 @@
 import React, { useState, useEffect, CSSProperties } from 'react';
 import { NavWrapper, MobileWrapper } from './style'
-import hover1 from '../../static/hover.mp3'
 import candyFul from '../../static/images/candyFul.png'
 import candyMobile from '../../static/images/candyFulf.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { ShoppingOutlined, ArrowUpOutlined, TeamOutlined, SmileOutlined, UserOutlined, LoginOutlined, DownOutlined, LogoutOutlined, HomeOutlined, ShoppingCartOutlined, BookOutlined } from '@ant-design/icons';
-import { Badge, BackTop, Dropdown, Menu, Space } from 'antd'
+import { ShoppingOutlined, ArrowUpOutlined, LoginOutlined,  LogoutOutlined} from '@ant-design/icons';
+import { Badge, BackTop} from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreators from '../../pages/Login/store/actionCreators'
 import axios from 'axios'
@@ -24,12 +23,12 @@ const style: CSSProperties = {
   fontSize: 14,
 };
 
-let hov = new Audio;
+
 
 const Navi: React.FC = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const [play, setPlay] = useState(false)
+  // const [play, setPlay] = useState(false)
   const [nav, setNav] = useState(false)
   const [res, setRes] = useState(false)
 
@@ -68,14 +67,16 @@ const Navi: React.FC = (props) => {
 
   }
 
-  const handleSound = () => {
-    hov.src = hover1;
-    hov.play();
-    setPlay(true)
-  }
-  const handleSoundOff = () => {
-    setPlay(false)
-  }
+  // const handleSound = () => {
+  //   // hov.src = hover1;
+  //   // hov.play();
+
+  //   // setPlay(true)
+  // }
+  // const handleSoundOff = () => {
+  //   // setPlay(false)
+  //   hov.play();
+  // }
 
 
   const handleHome = () => {
@@ -113,7 +114,7 @@ const Navi: React.FC = (props) => {
       method: "DELETE",
       url: process.env.REACT_APP_APIURL + "/api/login",
 
-    })
+    }).then(()=>(window.location.href="/",window.localStorage.clear()))
   }
 
 
@@ -130,16 +131,16 @@ const Navi: React.FC = (props) => {
 
             </div>
             <ul className="Nav" >
-              <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to="/"><span>Home</span></Link></li>
+              <li  className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to="/"><span>Home</span></Link></li>
               {/* <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/about'><span>About</span></Link> </li> */}
-              <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to="/product"><span>Product</span></Link></li>
-              <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/team'><span>Team</span></Link></li>
+              <li  className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to="/product"><span>Product</span></Link></li>
+              <li  className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/team'><span>Team</span></Link></li>
             
               {
                 login === true ?
                   <>
-                          <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/profile'><span>Profile</span></Link></li>
-                    <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"} ><span onClick={() => (tackle(), dispatch(actionCreators.setLogout()))}> Logout</span></li>
+                          <li  className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/profile'><span>Profile</span></Link></li>
+                    <li  className={nav === true ? "liText2" : "liText"} ><a className={nav === true ? "Lin2" : "Lin"} href='#'><span onClick={() => (tackle(), dispatch(actionCreators.setLogout()))}> Logout</span></a></li>
                     <Badge style={{ marginRight: "37px", marginTop: "5px" }} count={cart}>
                     <li style={{ fontSize: "25px", padding: "0 7px" }}><Link to='/check-out' className={nav === true ? "liCart2" : "liCart"}><ShoppingOutlined /></Link></li>
                   </Badge>
@@ -148,7 +149,7 @@ const Navi: React.FC = (props) => {
                   : 
                   
                   <>
-                   <li onMouseEnter={handleSound} onMouseOut={handleSoundOff} className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/login'><span>Login</span></Link></li>
+                   <li  className={nav === true ? "liText2" : "liText"}><Link className={nav === true ? "Lin2" : "Lin"} to='/login'><span>Login</span></Link></li>
            
                 
                   </>

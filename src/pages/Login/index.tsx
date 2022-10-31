@@ -1,10 +1,7 @@
-import { Button, Checkbox, Form, Input, Spin,Alert } from 'antd';
+import { Button,  Form, Input, Spin,Alert } from 'antd';
 import { LoginWrapper, SigninWrapper } from './style'
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link,Navigate,useNavigate  } from 'react-router-dom';
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { GoogleLogin } from 'react-google-login';
-import { gapi } from 'gapi-script';
 import { useSelector,useDispatch } from 'react-redux';
 import * as actionCreators from './store/actionCreators'
 import axios from 'axios'
@@ -14,7 +11,6 @@ axios.defaults.withCredentials = true;
 
 
 
-const { TextArea } = Input
 
 const Login = () => {
     const navigate =useNavigate()
@@ -27,7 +23,6 @@ const Login = () => {
  
 
     // const clientId = "362834148816-7fgha21udrng9ljd4toj717lggh7oeb4.apps.googleusercontent.com"
-    const [profile, setProfile] = useState([]);
     const [message,setMessage] =useState("");
     const [show,setShow] =useState(false)
 
@@ -44,9 +39,9 @@ const Login = () => {
     const [loading, setLoad] = useState(false)
  
 
-    const onChange = (e:any) => {
-        console.log(`checked = ${e.target.checked}`);
-      };
+    // const onChange = (e:any) => {
+    //     console.log(`checked = ${e.target.checked}`);
+    //   };
 
     const onFinish = (values: any) => {
         setLoad(true)
@@ -66,13 +61,13 @@ const Login = () => {
             if(res.status=== 200){
                 dispatch(actionCreators.setLogin())
                 dispatch(actionCreators.setRole(res.data))
-                navigate("/")
+                navigate("/product")
             }
 
         }).catch((err)=>{
              setLoad(false) 
              setShow(true)
-             console.log(err)
+         
 
             setMessage(err.response.data)
             })

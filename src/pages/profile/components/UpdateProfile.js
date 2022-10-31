@@ -31,20 +31,20 @@ const UpdateProfile = ({ profile }) => {
 
 
     const onFinish = (values) => {
-console.log(values.name,values.desc)
+
         setSpinner(true)
 
         let Form = new FormData();
 
 
-        Form.append("Address", values.desc)
-        Form.append("PhoneNumber", values.name)
+        Form.append("Address", values.address)
+        Form.append("PhoneNumber", values.phone)
 
         axios({
             method: "PUT",
             url: process.env.REACT_APP_APIURL + "/api/profile",
             data: Form,
-            headers:{'Content-Type': 'application/json; charset=utf-8'},
+            // headers:{'Content-Type': 'application/json; charset=utf-8'},
             withCredentials: true,
 
         })
@@ -56,7 +56,7 @@ console.log(values.name,values.desc)
             })
             .catch((err) => {
                 setSpinner(false)
-                console.log(err)
+              
             })
 
 
@@ -65,7 +65,7 @@ console.log(values.name,values.desc)
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        // console.log('Failed:', errorInfo);
     };
    
     if(login){
@@ -81,21 +81,21 @@ console.log(values.name,values.desc)
                         <Form
                             layout='vertical'
                             name="basic"
-                            initialValues={{ name: profile.phoneNumber, desc: profile.address }}
+                            initialValues={{ phone: profile.phoneNumber, address: profile.address }}
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
                             autoComplete="off">
     
                             <Form.Item
                                 label="Phone"
-                                name="name"
+                                name="phone"
                                 rules={[{ required: true, message: 'Please input phone number!' }]}>
                                 <Input placeholder='Phone number (01XXXXXXXX)' />
                             </Form.Item>
     
                             <Form.Item
                                 label="Address"
-                                name="desc"
+                                name="address"
                                 rules={[{ required: true, message: 'Please input your address!' }]}>
                                 <Input.TextArea showCount maxLength={200} rows={3} placeholder="Address " />
                             </Form.Item>
